@@ -7,7 +7,11 @@
 		{
 			"Name": "WaterSimulation",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"ProceduralMeshComponent"
+			]
 		}
 	],
 	"Plugins": [
@@ -29,6 +33,10 @@
 		{
 			"Name": "NiagaraFluids",
 			"Enabled": true
-		}
+		},
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		} 
 	]
 }
