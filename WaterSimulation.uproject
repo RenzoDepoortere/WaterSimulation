@@ -10,7 +10,8 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine",
-				"ProceduralMeshComponent"
+				"ProceduralMeshComponent",
+				"Water"
 			]
 		}
 	],
@@ -37,6 +38,6 @@
 		{
 			"Name": "ProceduralMeshComponent",
 			"Enabled": true
-		} 
+		}
 	]
 }

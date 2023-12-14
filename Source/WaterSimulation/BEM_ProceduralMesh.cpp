@@ -1,8 +1,13 @@
 #include "BEM_ProceduralMesh.h"
+#include "KismetProceduralMeshLibrary.h"
 
 ABEM_ProceduralMesh::ABEM_ProceduralMesh()
-	: m_Vertices{}
+	: NrRows{ 10 }
+	, NrCols{ 10 }
+	, PlaneSize{ 100.f }
+	, m_Vertices{}
 	, m_Triangles{}
+    , m_UVs{}
 {
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -33,16 +38,12 @@ void ABEM_ProceduralMesh::PostActorCreated()
 
 void ABEM_ProceduralMesh::CreateMesh()
 {
-	// Add vertices
-	m_Vertices.Add(FVector(0, 0, 0));
-	m_Vertices.Add(FVector(100, 0, 0));
-	m_Vertices.Add(FVector(0, 100, 0));
+    // Distance between vertices
+    const float deltaX{ PlaneSize / NrCols };
 
-	// Add indices
-	m_Triangles.Add(0);
-	m_Triangles.Add(1);
-	m_Triangles.Add(2);
+    // Create grid mesh
+    UKismetProceduralMeshLibrary::CreateGridMeshWelded(NrCols, NrRows, m_Triangles, m_Vertices, m_UVs, deltaX);
 
 	// Create mesh
-	ProceduralMesh->CreateMeshSection(0, m_Vertices, m_Triangles, TArray<FVector>(), TArray<FVector2D>(), TArray<FColor>(), TArray<FProcMeshTangent>(), false);
+	ProceduralMesh->CreateMeshSection(0, m_Vertices, m_Triangles, TArray<FVector>(), m_UVs, TArray<FColor>(), TArray<FProcMeshTangent>(), false);
 }
