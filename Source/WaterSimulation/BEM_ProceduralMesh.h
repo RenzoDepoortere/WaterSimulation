@@ -13,14 +13,21 @@ class WATERSIMULATION_API ABEM_ProceduralMesh : public AActor
 public:	
 	ABEM_ProceduralMesh();
 
-	virtual void PostActorCreated() override;
+	//virtual void PostActorCreated() override;
 	//virtual void BeginPlay() override;
 	//virtual void Tick(float DeltaTime) override;
+
+public:
+	// Public functions
+	UFUNCTION(CallInEditor, BlueprintCallable, Category = "Mesh")
+	void CreateMesh();
 
 public:
 	// Components
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	class UProceduralMeshComponent* ProceduralMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	class UBEM_Solver* BEM_Solver;
 
 public:
 	// Settings
@@ -36,7 +43,4 @@ private:
 	TArray<FVector> m_Vertices;
 	TArray<int32> m_Triangles;
 	TArray<FVector2D> m_UVs;
-
-	// Member functions
-	void CreateMesh();
 };
