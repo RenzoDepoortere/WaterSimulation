@@ -4,4 +4,5 @@ This project is an attemped combination of a wave propagation system and a fluid
 I used Unreal's built-in Shallow Water Simulation as wave propagation and Unreal's FLIP System as fluid simulation system.
 
 This project is based on the following paper: http://computationalsciences.org/publications/huang-2021-vast-ocean.html
+
 The following is my own paper: [Interactive ocean environment in Unreal Engine](https://github.com/RenzoDepoortere/WaterSimulation/files/14396067/GW2324_Depoortere_Renzo_EN_Paper.pdf)
